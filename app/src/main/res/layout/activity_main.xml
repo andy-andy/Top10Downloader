@@ -9,9 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.andreytarasenko.top10downloader.MainActivity">
 
-    <TextView
-        android:id="@+id/xml_text_view"
+    <Button
+        android:text="Top 10 Apps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:id="@+id/btnParse"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnParse"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/xmlListView" />
 </RelativeLayout>
