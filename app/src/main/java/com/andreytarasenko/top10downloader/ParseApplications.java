@@ -21,7 +21,7 @@ public class ParseApplications {
 
     public boolean process() {
         boolean status = true;
-        Application currentRecord;
+        Application currentRecord = null;
         boolean inEntry = false;
         String textValue = "";
 
@@ -43,8 +43,23 @@ public class ParseApplications {
                             currentRecord = new Application();
                         }
                         break;
+                    case XmlPullParser.TEXT:
+                        textValue = xpp.getText();
+                        break;
 
                     case XmlPullParser.END_TAG:
+                        if (inEntry) {
+                            if (tagName.equalsIgnoreCase("entry")) {
+                                applications.add(currentRecord);
+                                inEntry = false;
+                            } else if (tagName.equalsIgnoreCase("name")) {
+                                currentRecord.setName(textValue);
+                            } else if (tagName.equalsIgnoreCase("artist")) {
+                                currentRecord.setArtist(textValue);
+                            } else if (tagName.equalsIgnoreCase("releaseDate")) {
+                                currentRecord.setReleaseDate(textValue);
+                            }
+                        }
                         break;
 
                     default:

@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ParseApplications parseApplications = new ParseApplications(mFileContents);
                 parseApplications.process();
+
+                ArrayAdapter<Application> arrayAdapter = new ArrayAdapter<Application>(MainActivity.this,
+                        R.layout.list_item, parseApplications.getApplications());
+                xmlListView.setAdapter(arrayAdapter);
+
             }
         });
 

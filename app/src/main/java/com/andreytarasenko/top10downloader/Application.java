@@ -28,4 +28,11 @@ public class Application {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + "\n" +
+                "Artist: " + artist + "\n" +
+                "Release Date: " + releaseDate + "\n";
+    }
 }
