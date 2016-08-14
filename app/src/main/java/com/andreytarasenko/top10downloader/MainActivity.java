@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnParse;
     private ListView xmlListView;
+    private String mFileContents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         btnParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: code here
-
+                ParseApplications parseApplications = new ParseApplications(mFileContents);
+                parseApplications.process();
             }
         });
 
@@ -41,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
-
-        private String mFileContents;
 
         @Override
         protected String doInBackground(String... strings) {
